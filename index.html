@@ -1,13 +1,9 @@
 <!doctype html>
-<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title></title>
+  <title>Rails Hotline: (877) 817-4190</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -15,47 +11,71 @@
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-  <link rel="stylesheet" href="css/style.css?v=2">
-  <script src="js/libs/modernizr-1.7.min.js"></script>
-
+  <link rel="stylesheet" href="stylesheets/style.css?v=2">
 </head>
 
 <body>
-
   <div id="container">
     <header>
-
+      RailsHotline.com : 1 (877) 817-4190
     </header>
     <div id="main" role="main">
-
+      <h2>Have a Ruby or Rails question?</h2>
+      <h1>Call a pro: (877) 817-4190</h1>
+    </div>
+    <div id="operators" style="display:none;">
+      <h3><span id="operators-count"></span> on call now:</h3>
+      <ul></ul>
+      Want to volunteer to take calls? <a href="http://rails.pockethotline.com/apply">Apply now</a>
     </div>
     <footer>
-
+      <a href="http://www.pockethotline.com">Community Powered Hotline from Pocket Hotline</a>
     </footer>
   </div> <!-- eo #container -->
 
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
-  <script>window.jQuery || document.write("<script src='js/libs/jquery-1.5.1.min.js'>\x3C/script>")</script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+  <script src="javascripts/gravatar.js"></script>
+  <script>
+    // handles the response from pocket hotline
+    // needs to be above the getJSON call (and must! be called parsePocketHotlineResponse)
+    function parsePocketHotlineResponse(data) {
 
+       // grab the operators
+       var items = [];
+       $.each(data, function(key, val) {
+         user = '<li class="user">';
+         user += '<h4 class="name">' + val['user']['name'] + '</h4>';
+         // todo check for gravatar, bio, and twitter before adding
+         user += '<img class="profile" src="' + get_gravatar(val['user']['email'], 50) + '" />';
+         user += '<p>' + val['user']['bio'] + '</p>';
+         user += '<a href="http://twitter.com/' + val['user']['twitter'] + '">@' + val['user']['twitter'] + '</a>';
+         user += '</li>';
+         items.push(user);
+       });
+       $('#operators ul').html(items.join(''))
 
-  <!-- scripts concatenated and minified via ant build script-->
-  <script src="js/plugins.js"></script>
-  <script src="js/script.js"></script>
-  <!-- end scripts-->
+       // update count
+       result = data.length + ' volunteer operator'
+       if (data.length != 1) {
+         result += 's'
+       }
+       $('#operators-count').html(result);
+       
+       // show operators sidebar
+       $('#operators').show();
+     }
 
-
-  <!--[if lt IE 7 ]>
-    <script src="js/libs/dd_belatedpng.js"></script>
-    <script>DD_belatedPNG.fix("img, .png_bg");</script>
-  <![endif]-->
-
-
+    // request the on call list from pocket hotline
+    $(function() {
+      $.getJSON('http://rails.pockethotline.com/api?jsoncallback=?');
+    });
+  </script>
 
   <script>
-    var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]]; // Change UA-XXXXX-X to be your site's ID 
+    var _gaq=[["_setAccount","UA-22349438-2"],["_trackPageview"]]; // Change UA-XXXXX-X to be your site's ID 
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-    g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+    g.src=("https:"==location.protocol?"https://":"http://www")+".google-analytics.com/ga.js";
     s.parentNode.insertBefore(g,s)}(document,"script"));
   </script>
 
