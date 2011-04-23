@@ -156,6 +156,10 @@ div#operators {
 	margin-bottom: 20px;
 }
 
+#operators p {
+	margin: 0;
+}
+
 #operators ul {
 	margin: 0;
 }
