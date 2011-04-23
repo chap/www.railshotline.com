@@ -1,8 +1,14 @@
+body {
+	background: #333;
+}
+
 div#container {
+	background: #fff;
 	width: 500px;
 	margin-left: auto;
 	margin-right: auto;
-		overflow: hidden;
+	overflow: hidden;
+	box-shadow: 0px 10px 10px #000;
 }
 header {
 	padding-top: 50px;
@@ -10,18 +16,14 @@ header {
 	color: #000;
 	text-transform: uppercase;
 
-	background-image: -webkit-gradient(
-	    linear,
-	    left bottom,
-	    left top,
-	    color-stop(0.3, #FFFFFF),
-	    color-stop(0.80, #F2E3C0)
-	);
-	background-image: -moz-linear-gradient(
-	    center bottom,
-	    rgb(255,255,255) 16%,
-	    rgb(243,232,151) 58%
-	);
+	background: #D6BDAB; /* old browsers */
+	background: -moz-linear-gradient(top, #D6BDAB 1%, #F2E3C0 5%, #FFF 100%); /* firefox */
+
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#D6BDAB), color-stop(5%,#F2E3C0), color-stop(100%,#FFF)); /* webkit */
+
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#D6BDAB', endColorstr='#FFF',GradientType=0 ); /* ie */
+
+	background: -o-linear-gradient(top, #D6BDAB 1%,#F2E3C0 5%,#FFF 100%); /* opera */
 
 }
 
@@ -57,13 +59,13 @@ header h1#number {
 	background: #b9001c;
 	color: #fff;
 	margin: 0 -50px;
-	padding: 10px;
 	border: none;
+	text-shadow: 2px 2px 10px #78000f;
 }
 
 div#tab_container {
 	background: #fff;
-	width: 66%;
+	width: 62%;
 	float: left;
 }
 
@@ -95,6 +97,7 @@ ul#nav li a:hover {
 div#tab_container div {
 	padding-top: 20px;
 	padding-right: 20px;
+	padding-left: 10px;
 	clear: both;
 	font-size: 20px;
 }
@@ -126,10 +129,11 @@ div#tab_container div {
 }
 
 div#operators {
-	width: 33%;
+	width: 34%;
 	float: right;
 	background: #fff;
 	color: #000;
+	padding-right: 10px;
 }
 
 #operators h3 {
