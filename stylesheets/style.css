@@ -1,5 +1,14 @@
 body {
 	background: #333;
+	color: #000;
+}
+
+a, a:hover {
+	color: #b9001c;
+}
+
+a:visited {
+	color: #000;
 }
 
 div#container {
@@ -114,7 +123,8 @@ div#tab_container div {
 #faq li a:hover {
 	cursor: pointer;
 }
-#join p {
+
+p {
 	margin-bottom: 15px;
 }
 
@@ -126,6 +136,11 @@ div#tab_container div {
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	font-weight: bold;
+	text-decoration: none;
+}
+
+#join a:hover {
+	background: #000;
 }
 
 div#operators {
