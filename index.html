@@ -9,27 +9,70 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+  <link rel="stylesheet" href="stylesheets/boilerplate.css?v=2">
   <link rel="stylesheet" href="stylesheets/style.css?v=2">
 </head>
 
 <body>
+  <h3 id="oncall"><span id="operators-count"></span> on call now!</h3>
   <div id="container">
     <header>
-      RailsHotline.com : 1 (877) 817-4190
+      <h2>Need Help With</h2>
+      <h1>Rails?</h1>
+      <h3>Call an Expert</h3>
+      <h1 id="number">877-817-4190</h1>
     </header>
-    <div id="main" role="main">
-      <h2>Have a Ruby or Rails question?</h2>
-      <h1>Call a pro: (877) 817-4190</h1>
+
+    <div id="tab_container">
+      <ul id="nav">
+        <li><a id="home" class="active">Home</a></li>
+        <li><a id="about">About</a></li>
+        <li><a id="faq">FAQ</a></li>
+        <li><a id="join">Join</a></li>
+      </ul>
+
+      <div id="home">
+        The Rails Hotline is run by local experts and fans of Rails. In a jam? Call an expert. Know your controllers from your configs? Join us and help the Rails community.
+      </div>
+
+      <div id="about" style="display:none;">
+        The Rails Hotline is powered by Pocket Hotline, a facilitated community that provides crowdsourced support.
+      </div>
+
+      <div id="faq" style="display:none;">
+        <ul>
+          <li>
+            <a>How much does it cost?</a>
+            <p style="display:none;">Here's the FAQ info.</p>
+          </li>
+          <li>
+            <a>Who is the operator?</a>
+            <p style="display:none;">Here's the FAQ info.</p>
+          </li>
+          <li>
+            <a>How many times can I call</a>
+            <p style="display:none;">Here's the FAQ info.</p>
+          </li>
+          <li>
+            <a>How can I start my own hotline?</a>
+            <p style="display:none;">Here's the FAQ info.</p>
+          </li>
+        </ul>
+      </div>
+
+      <div id="join" style="display:none;">
+        <p>Want to volunteer and take Rails support calls?</p>
+        <a>Apply Now</a>
+      </div>
     </div>
+    
     <div id="operators" style="display:none;">
-      <h3><span id="operators-count"></span> on call now:</h3>
+      <h3>Volunteers on call</h3>
       <ul></ul>
-      Want to volunteer to take calls? <a href="https://spreadsheets.google.com/a/pockethotline.com/spreadsheet/embeddedform?formkey=dEk2TWt6YUZ6OE1WSWN5OHhXSkFyemc6MQ">Apply now</a>
     </div>
     <footer>
-      <a href="http://www.pockethotline.com">Community Powered Hotline from Pocket Hotline</a>
+      <!-- <a href="http://www.pockethotline.com">Community Powered Hotline from Pocket Hotline</a> -->
     </footer>
   </div> <!-- eo #container -->
 
@@ -45,9 +88,9 @@
        var items = [];
        $.each(data, function(key, val) {
          user = '<li class="user">';
-         user += '<h4 class="name">' + val['user']['name'] + '</h4>';
          // todo check for gravatar, bio, and twitter before adding
-         user += '<img class="profile" src="' + get_gravatar(val['user']['email'], 50) + '" />';
+         user += '<img class="gravatar" src="' + get_gravatar(val['user']['email'], 50) + '" />';
+         user += '<h4 class="name">' + val['user']['name'] + '</h4>';
          user += '<p>' + val['user']['bio'] + '</p>';
          user += '<a href="http://twitter.com/' + val['user']['twitter'] + '">@' + val['user']['twitter'] + '</a>';
          user += '</li>';
@@ -66,9 +109,21 @@
        $('#operators').show();
      }
 
-    // request the on call list from pocket hotline
     $(function() {
+      // request the on call list from pocket hotline
       $.getJSON('http://rails.pockethotline.com/api?jsoncallback=?');
+
+      $('#nav li a').click(function() {
+        $('#tab_container div').hide();
+        $('#nav a').removeClass('active');
+
+        $(this).addClass('active');
+        $('div#' + $(this).attr('id') + '').show();
+      })
+
+      $('#faq li a').click(function() {
+        $(this).siblings().slideToggle();
+      });
     });
   </script>
 
