@@ -72,6 +72,11 @@ header h1#number {
 	text-shadow: 2px 2px 10px #78000f;
 }
 
+header h1#number a {
+	color: #fff;
+	text-decoration: none;
+}
+
 div#tab_container {
 	background: #fff;
 	width: 62%;
