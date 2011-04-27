@@ -66,7 +66,7 @@
     </div>
     
     <div id="operators" style="display:none;">
-      <h3>Volunteers on call</h3>
+      <h3>Volunteers Available</h3>
       <ul></ul>
     </div>
   </div> <!-- eo #container -->
@@ -90,10 +90,16 @@
        $.each(data, function(key, val) {
          user = '<li class="user">';
          // todo check for gravatar, bio, and twitter before adding
+         console.log(val['user']);
          user += '<img class="gravatar" src="' + get_gravatar(val['user']['email'], 50) + '" width="50" height="50"/>';
          user += '<h4 class="name">' + val['user']['name'] + '</h4>';
-         user += '<p>' + val['user']['bio'] + '</p>';
-         user += '<a href="http://twitter.com/' + val['user']['twitter'] + '">@' + val['user']['twitter'] + '</a>';
+         if (val['user']['on_a_call?']) {
+           user += '<img src="onacall.gif" width="77" height="16" alt="on a call" /><br />';
+         };
+         user += '<p>';
+         user += val['user']['bio'];
+         user += ' <a href="http://twitter.com/' + val['user']['twitter'] + '">@' + val['user']['twitter'] + '</a>';
+         user += '</p>';
          user += '</li>';
          items.push(user);
        });

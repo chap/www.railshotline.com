@@ -201,7 +201,7 @@ div#operators {
 	list-style-type: none;
 }
 
-#operators li img{
+#operators li img.gravatar{
 	float: left;
 	margin-right: 10px;
 	margin-bottom: 5px;
