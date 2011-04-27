@@ -39,7 +39,7 @@
 
       <div id="about" style="display:none;">
         <p>The Rails Hotline was conceived and built by <a href="http://twitter.com/getmetacos">Scott</a> and <a href="http://twitter.com/chapambrose">Chap</a>.</p>
-        <p>We owe a lot of our success to the generous spirit of the ruby community and wanted to give a little of it back.</p>
+        <p>We owe a lot of our success to the generous spirit of the ruby community and wanted to give a little back.</p>
       </div>
 
       <div id="faq" style="display:none;">
@@ -55,10 +55,6 @@
           <li>
             <a>When can I call?</a>
             <p style="display:none;">Whenever you need help. Check this page to see when someone's on call.</p>
-          </li>
-          <li>
-            <a>How can I start my own hotline?</a>
-            <p style="display:none;">Visit <a href="http://www.pockethotline.com">PocketHotline.com</a></p>
           </li>
         </ul>
       </div>
@@ -76,7 +72,7 @@
   </div> <!-- eo #container -->
   <footer>
     <a href="http://www.pockethotline.com" style="color:#fff;">
-      <img src="pocket_hotline_logo.png"><br />
+      <img src="pocket_hotline_logo.png" width="23" height="35"><br />
       community hotline powered by Pocket Hotline
     </a>
   </footer>
@@ -94,7 +90,7 @@
        $.each(data, function(key, val) {
          user = '<li class="user">';
          // todo check for gravatar, bio, and twitter before adding
-         user += '<img class="gravatar" src="' + get_gravatar(val['user']['email'], 50) + '" width=50 height=50/>';
+         user += '<img class="gravatar" src="' + get_gravatar(val['user']['email'], 50) + '" width="50" height="50"/>';
          user += '<h4 class="name">' + val['user']['name'] + '</h4>';
          user += '<p>' + val['user']['bio'] + '</p>';
          user += '<a href="http://twitter.com/' + val['user']['twitter'] + '">@' + val['user']['twitter'] + '</a>';
@@ -105,16 +101,19 @@
 
        // update count
        result = data.length + ' volunteer operator'
-       if (data.length != 1) {
-         result += 's'
-       }
-       $('#operators-count').html(result);
-       
-       // show operators sidebar
-       $('#operators').show();
+       if (data.length != 1) {result += 's'};
+       if (data.length == 0) {
+         result += 's';
+         $('#operators ul').html("<li>Sorry, looks like all our volunteers are taking naps or tending to the garden.</li><li>Check back later to see who's on call.</li>");
+        } else {
+          $('#operators-count').html(result);
 
-       // animate top banner
-       $('#oncall').slideDown();
+           // animate top banner
+           $('#oncall').slideDown(); 
+        };
+
+        // show operators sidebar
+        $('#operators').fadeIn();
      }
 
     $(function() {
