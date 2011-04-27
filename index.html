@@ -124,8 +124,7 @@
 
     $(function() {
       // request the on call list from pocket hotline
-      // make sure you keep the ?jsoncallback=? part
-      $.getJSON('http://rails.pockethotline.com/api?jsoncallback=?');
+      $.getScript('http://rails.pocket-hotline.dev/api');
 
       $('#nav li a').click(function() {
         $('#tab_container div').hide();
