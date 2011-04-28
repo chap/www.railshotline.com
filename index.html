@@ -124,7 +124,7 @@
 
     $(function() {
       // request the on call list from pocket hotline
-      $.getScript('http://rails.pockethotline.com/api');
+      $.getJSON('http://rails.pocket-hotline.dev/api?callback=?');
 
       $('#nav li a').click(function() {
         $('#tab_container div').hide();
