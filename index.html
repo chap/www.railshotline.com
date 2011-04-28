@@ -109,7 +109,7 @@
        result = data.length + ' volunteer operator'
        if (data.length != 1) {result += 's'};
        if (data.length == 0) {
-         result += 's';
+         $('#operators h3').html('No Volunteers Available');
          $('#operators ul').html("<li>Sorry, looks like all our volunteers are taking naps or tending to the garden.</li><li>Check back later to see who's on call.</li>");
         } else {
           $('#operators-count').html(result);
