@@ -201,10 +201,27 @@ div#operators {
 	list-style-type: none;
 }
 
-#operators li img.gravatar{
+#operators li div.avatar{
+	width: 50px;
+	height: 50px;
 	float: left;
 	margin-right: 10px;
 	margin-bottom: 5px;
+}
+
+#operators li div.avatar div.points {
+	font-size: 12px;
+	margin-top: 30px;
+	margin-right: -4px;
+	text-align:center;
+	min-width: 15px;
+	float: right;
+	background: #b9001c;
+	color: #fff;
+	padding: 5px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
 }
 
 #operators li p, #operators li a {

@@ -66,7 +66,7 @@
       </div>
 
       <div id="contact" style="display:none;">
-        <p>Want to say thanks to an operator or share a cool story?</p>
+        <p>Want to say thanks to a volunteer or share a cool story?</p>
         <p>Shoot an email to <a href="mailto:railshotline@gmail.com">railshotline@gmail.com</a></p>
         <p>(Looking to join the elite ranks of the Rails Hotline? <a href="apply.html">Apply Here</a>)
       </div>
@@ -98,7 +98,9 @@
          user = '<li class="user">';
          // todo check for gravatar, bio, and twitter before adding
          console.log(val['user']);
-         user += '<img class="gravatar" src="' + get_gravatar(val['user']['email'], 50) + '" width="50" height="50"/>';
+         user += '<div class="avatar" style="background: url(' + get_gravatar(val['user']['email'], 50) + ') no-repeat;">';
+         user += '<div class="points">' + val['user']['total_points'] + '</div>';
+         user += '</div>';
          user += '<h4 class="name">' + val['user']['name'] + '</h4>';
          if (val['user']['on_a_call?']) {
            user += '<img src="onacall.gif" width="77" height="16" alt="on a call" /><br />';
