@@ -97,7 +97,6 @@
        $.each(data, function(key, val) {
          user = '<li class="user">';
          // todo check for gravatar, bio, and twitter before adding
-         console.log(val['user']);
          user += '<div class="avatar" style="background: url(' + get_gravatar(val['user']['email'], 50) + ') no-repeat;">';
          user += '<div class="points">' + val['user']['total_points'] + '</div>';
          user += '</div>';
