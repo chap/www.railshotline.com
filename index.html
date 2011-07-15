@@ -62,7 +62,7 @@
 
       <div id="join" style="display:none;">
         <p>Want to volunteer and take Rails calls?</p>
-        <a href="apply.html">Apply Now</a>
+        <p><a href="http://rails.pockethotline.com/users/apply">Apply Now</a></p>
       </div>
 
       <div id="contact" style="display:none;">
@@ -132,7 +132,7 @@
 
     $(function() {
       // request the on call list from pocket hotline
-      $.getJSON('http://rails.pockethotline.com/api?callback=?');
+      $.getScript('http://rails.pockethotline.com/api');
 
       $('#nav li a').click(function() {
         $('#tab_container div').hide();
